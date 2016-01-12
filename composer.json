@@ -1,7 +1,7 @@
 {
     "name": "bsinfosys/doctrine1",
     "type": "library",
-    "version": "1.2.5.4",
+    "version": "1.2.5.5",
     "description": "PHP5 Database ORM",
     "keywords": ["orm", "database"],
     "homepage": "http://www.doctrine-project.org",
