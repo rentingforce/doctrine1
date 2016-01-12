@@ -1632,8 +1632,13 @@ abstract class Doctrine_Connection extends Doctrine_Configurable implements Coun
         $generated = implode('_', $parts);
 
         // If the final length is greater than 64 we need to create an abbreviated fk name
-        if (strlen(sprintf($format, $generated)) > $maxLength) {
-            $name = md5($generated);
+        if (strlen($generated) > $maxLength) {
+            if(strpos($generated,'from_prfx_')!==false)
+                $name = md5(str_replace('from_prfx_','',$generated)).'from_prfx_';
+            elseif(strpos($generated,'to_prfx_')!==false)
+                $name = md5(str_replace('to_prfx_','',$generated)).'to_prfx_';
+            else
+                $name = md5($generated);
         } else {
             $name = $generated;
         }
