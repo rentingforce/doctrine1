@@ -76,7 +76,8 @@ class Doctrine_Template_Listener_SoftDelete extends Doctrine_Record_Listener
         $invoker = $event->getInvoker();
         
         if ($this->_options['type'] == 'timestamp') {
-            $invoker->$name = date('Y-m-d H:i:s', time());
+            if (empty($invoker->$name))
+                $invoker->$name = date('Y-m-d H:i:s', time());
         } else if ($this->_options['type'] == 'boolean') {
             $invoker->$name = true;
         }
