@@ -112,7 +112,7 @@ class Doctrine_Template_Versionable extends Doctrine_Template
         $data = $auditLog->getVersion($this->getInvoker(), $version);
 
         if ( ! isset($data[0])) {
-            throw new Doctrine_Record_Exception('Version ' . $version . ' ('.$this->_table.') does not exist!');
+            throw new Doctrine_Record_Exception('Version ' . $version . ' ('.$this->getTable()->getTableName().') does not exist!');
         }
 
         $this->getInvoker()->merge($data[0]);
